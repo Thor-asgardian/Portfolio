@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhuvan R</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <h1>Bhuvan R</h1>
+  <div>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact" class="btn">Hire</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1 id="hero-title">AI Systems Engineer</h1>
+  <p>Distributed Systems • Cloud • Production AI</p>
+
+  <div class="actions">
+    <a href="#projects" class="btn">View Work</a>
+    <a href="Bhuvan_R.pdf" class="btn-outline">Download Resume</a>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section">
+  <h2>Skills</h2>
+
+  <div class="skills-grid">
+    <div>
+      <h3>Languages</h3>
+      <p>Python, Java, C, C++, PHP, Shell</p>
+    </div>
+
+    <div>
+      <h3>Web & Backend</h3>
+      <p>HTML, CSS, Node.js, Django, API Integration</p>
+    </div>
+
+    <div>
+      <h3>Data & ML</h3>
+      <p>TF-IDF, Ensemble Models, LIME, RAG (FAISS/Chroma)</p>
+    </div>
+
+    <div>
+      <h3>Databases</h3>
+      <p>MySQL, MongoDB</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="experience">
+  <h2>Technical Experience</h2>
+
+  <div class="exp-card">
+    <h3>AI Transaction Categorizer (2025–Present)</h3>
+
+    <p><strong>System:</strong> End-to-end ML pipeline with synthetic data generation → TF-IDF → ensemble models.</p>
+
+    <p><strong>Engineering:</strong> Real-time inference engine with rule-based early exit + ML fallback with probability scoring.</p>
+
+    <p><strong>Tools:</strong> Python, Streamlit, LIME</p>
+
+    <p><strong>Outcome:</strong> Explainable AI system with confidence scoring + offline enterprise deployment.</p>
+  </div>
+
+  <div class="exp-card">
+    <h3>Django eLearning Platform</h3>
+
+    <p><strong>System:</strong> Modular LMS with role-based authentication (Admin / Instructor / Student).</p>
+
+    <p><strong>Engineering:</strong> Course management workflows + reusable UI components.</p>
+
+    <p><strong>Scale:</strong> Designed for REST API + mobile integration.</p>
+
+    <p><strong>Outcome:</strong> Scalable, extensible education platform.</p>
+  </div>
+
+  <div class="exp-card">
+    <h3>AI Healthcare Assistant (2024–2025)</h3>
+
+    <p><strong>System:</strong> Bilingual AI assistant (English/Kannada) with voice + text.</p>
+
+    <p><strong>Engineering:</strong> STT/TTS pipeline + RAG using FAISS/Chroma.</p>
+
+    <p><strong>Tools:</strong> Flask, LangChain, HuggingFace</p>
+
+    <p><strong>Outcome:</strong> Fully local, privacy-focused AI system.</p>
+  </div>
+
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects">
+  <h2>Selected Work</h2>
+
+  <div class="grid">
+
+    <div class="card" onclick="openProject('categorizer')">
+      <h3>AI Transaction Categorizer</h3>
+      <p>Explainable ML pipeline →</p>
+    </div>
+
+    <div class="card" onclick="openProject('healthcare')">
+      <h3>Healthcare Assistant</h3>
+      <p>RAG + multilingual AI →</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h2 id="modal-title"></h2>
+      <span class="close-btn" onclick="closeModal()">×</span>
+    </div>
+
+    <div class="tabs">
+      <button onclick="switchTab('overview')">Overview</button>
+      <button onclick="switchTab('architecture')">Architecture</button>
+      <button onclick="switchTab('tech')">Tech</button>
+      <button onclick="switchTab('impact')">Impact</button>
+    </div>
+
+    <div id="modal-body"></div>
+
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="cta">
+  <h2>Available for Internships and Jobs</h2>
+
+  <p class="cta-sub">
+    bhuvanrms@gmail.com • +91 7019969393
+  </p>
+
+  <div class="cta-actions">
+    <a href="mailto:bhuvanrms@gmail.com" class="btn primary">
+      📧 Email Me
+    </a>
+
+    <a href="https://wa.me/917019969393" target="_blank" class="btn secondary">
+      💬 WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Bhuvan R</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
