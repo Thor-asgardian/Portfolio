@@ -1,128 +1,218 @@
-let currentProject = null;
-let currentTab = "overview";
+const modal = document.getElementById("modal");
+const title = document.getElementById("modal-title");
+const body = document.getElementById("modal-body");
 
-/* ================= PROJECT DATA ================= */
-const projects = {
+let currentProject = null;
+
+/* ================= DATA ================= */
+const data = {
   categorizer: {
     title: "AI Transaction Categorizer",
 
-    overview: `
-      <p>End-to-end ML pipeline converting raw transactions into structured categories.</p>
-    `,
+    overview: "High-throughput classification using hybrid ML + rule system.",
 
-    architecture: `
-      <ul>
-        <li>Synthetic Data Generation</li>
-        <li>TF-IDF Vectorization</li>
-        <li>Ensemble Models</li>
-        <li>Rule Engine (early exit)</li>
-        <li>Confidence Scoring</li>
-      </ul>
-    `,
-
-    tech: `
-      <p>Python, Streamlit, LIME, TF-IDF, Ensemble Learning</p>
-    `,
+    tech: "Python, TF-IDF, Ensemble Models, LIME",
 
     impact: `
-      <p>Explainable AI system with real-time inference and offline enterprise deployment.</p>
-    `
+- Reduced latency by 40%
+- Improved confidence scoring
+- Offline deployment ready
+`,
+
+    scaling: `
+- Stateless APIs for horizontal scaling
+- Rule engine reduces ML load
+- ML container autoscaling
+`,
+
+    failure: `
+- ML failure → fallback rules
+- Timeout handling
+- Low confidence rejection
+`,
+
+    tradeoffs: `
+- Rules = fast but rigid
+- ML = flexible but slower
+- Hybrid balances both
+`
   },
 
   healthcare: {
-    title: "AI Healthcare Assistant",
+    title: "Healthcare Assistant",
 
-    overview: `
-      <p>Bilingual AI assistant enabling voice + text interaction in English & Kannada.</p>
-    `,
+    overview: "RAG-based multilingual assistant with offline support.",
 
-    architecture: `
-      <ul>
-        <li>Speech-to-Text (STT)</li>
-        <li>Natural Language Processing</li>
-        <li>RAG (FAISS / Chroma)</li>
-        <li>Response Generation</li>
-        <li>Text-to-Speech (TTS)</li>
-      </ul>
-    `,
-
-    tech: `
-      <p>Flask, LangChain, HuggingFace, FAISS, Gradio</p>
-    `,
+    tech: "Flask, LangChain, FAISS, HuggingFace",
 
     impact: `
-      <p>Privacy-focused local AI system with multilingual conversational capability.</p>
-    `
+- Offline AI capability
+- Reduced cloud dependency
+- Regional language support
+`,
+
+    scaling: `
+- Vector DB sharding
+- Stateless pipeline
+- Modular services
+`,
+
+    failure: `
+- STT failure → text fallback
+- Retrieval failure → direct LLM
+- Latency skip retrieval
+`,
+
+    tradeoffs: `
+- RAG improves accuracy but adds latency
+- Local inference limits scalability
+`
   }
 };
 
-/* ================= OPEN PROJECT ================= */
-function openProject(id) {
-  currentProject = projects[id];
-  currentTab = "overview";
+/* ================= HELPERS ================= */
 
-  const modal = document.getElementById("modal");
-  modal.style.display = "block";
-
-  document.getElementById("modal-title").innerText = currentProject.title;
-
-  renderTab();
-  highlightTab();
+function formatList(text) {
+  return text
+    .split("\n")
+    .filter(l => l.trim())
+    .map(l => `<li>${l.replace("-", "").trim()}</li>`)
+    .join("");
 }
 
-/* ================= TAB SWITCH ================= */
-function switchTab(tab) {
-  currentTab = tab;
-  renderTab();
-  highlightTab();
-}
-
-/* ================= RENDER CONTENT ================= */
-function renderTab() {
-  const body = document.getElementById("modal-body");
-  body.innerHTML = currentProject[currentTab];
-}
-
-/* ================= ACTIVE TAB UI ================= */
-function highlightTab() {
-  document.querySelectorAll(".tabs button").forEach(btn => {
-    btn.classList.remove("active");
-  });
-
-  const activeBtn = document.querySelector(`.tabs button[onclick="switchTab('${currentTab}')"]`);
-  if (activeBtn) activeBtn.classList.add("active");
-}
-
-/* ================= CLOSE MODAL ================= */
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-}
-
-/* ================= CLICK OUTSIDE ================= */
-window.onclick = function(event) {
-  const modal = document.getElementById("modal");
-  if (event.target === modal) {
-    closeModal();
-  }
-};
-
-/* ================= CARD TILT (IMPROVED) ================= */
-document.querySelectorAll(".card").forEach(card => {
-  card.addEventListener("mousemove", e => {
-    const rect = card.getBoundingClientRect();
-
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-    card.style.transform = `
-      perspective(600px)
-      rotateX(${ -y * 8 }deg)
-      rotateY(${ x * 8 }deg)
-      scale(1.02)
+function getDiagram(id) {
+  if (id === "categorizer") {
+    return `
+      <div class="flow">
+        <div>Input</div>
+        <div>Preprocess</div>
+        <div>Rules</div>
+        <div>ML</div>
+        <div>Confidence</div>
+        <div>Output</div>
+      </div>
     `;
-  });
+  }
 
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "perspective(600px) rotateX(0) rotateY(0) scale(1)";
+  if (id === "healthcare") {
+    return `
+      <div class="flow">
+        <div>User</div>
+        <div>STT</div>
+        <div>Query</div>
+        <div>FAISS</div>
+        <div>LLM</div>
+        <div>TTS</div>
+      </div>
+    `;
+  }
+
+  return "";
+}
+
+/* ================= TABS ================= */
+
+function renderTabs(projectId) {
+  const p = data[projectId];
+
+  return `
+    <div class="tabs">
+      <button onclick="switchTab('overview')">Overview</button>
+      <button onclick="switchTab('architecture')">Architecture</button>
+      <button onclick="switchTab('scaling')">Scaling</button>
+      <button onclick="switchTab('failure')">Failure</button>
+      <button onclick="switchTab('tradeoffs')">Tradeoffs</button>
+    </div>
+
+    <div id="tab-content"></div>
+  `;
+}
+
+function switchTab(tab) {
+  const p = currentProject;
+  const container = document.getElementById("tab-content");
+
+  if (!p || !container) return;
+
+  if (tab === "overview") {
+    container.innerHTML = `
+      <p>${p.overview}</p>
+      <h4>Tech</h4>
+      <p>${p.tech}</p>
+      <h4>Impact</h4>
+      <ul class="list">${formatList(p.impact)}</ul>
+    `;
+  }
+
+  if (tab === "architecture") {
+    container.innerHTML = `
+      <div class="diagram">${getDiagram(currentProjectKey)}</div>
+    `;
+  }
+
+  if (tab === "scaling") {
+    container.innerHTML = `
+      <ul class="list">${formatList(p.scaling)}</ul>
+    `;
+  }
+
+  if (tab === "failure") {
+    container.innerHTML = `
+      <ul class="list">${formatList(p.failure)}</ul>
+    `;
+  }
+
+  if (tab === "tradeoffs") {
+    container.innerHTML = `
+      <ul class="list">${formatList(p.tradeoffs)}</ul>
+    `;
+  }
+}
+
+/* ================= MODAL ================= */
+
+let currentProjectKey = null;
+
+function openProject(id) {
+  const p = data[id];
+  if (!p) return;
+
+  currentProject = p;
+  currentProjectKey = id;
+
+  title.textContent = p.title;
+
+  body.innerHTML = renderTabs(id);
+
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
+
+  switchTab("overview");
+}
+
+function closeModal() {
+  modal.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+/* ================= UX ================= */
+
+modal.addEventListener("click", e => {
+  if (e.target === modal) closeModal();
+});
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeModal();
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
   });
+});
+
+document.querySelectorAll(".section").forEach(sec => {
+  observer.observe(sec);
 });
