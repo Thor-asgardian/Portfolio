@@ -221,6 +221,36 @@ body {
   box-shadow: 0 25px 80px rgba(56,189,248,0.12);
 }
 
+.card-links {
+  margin-top: 15px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card-links a {
+  font-size: 0.9rem;
+  color: #38bdf8;
+  text-decoration: none;
+  position: relative;
+}
+
+.card-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background: #38bdf8;
+  transition: 0.3s;
+}
+
+.card-links a:hover::after {
+  width: 100%;
+}
+
 /* ================= CONTACT ================= */
 .contact-text {
   margin-top: 10px;
