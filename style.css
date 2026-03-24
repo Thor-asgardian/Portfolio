@@ -242,8 +242,11 @@ body {
   border: none;
   cursor: pointer;
   line-height: 1;
-  position: relative;
-  z-index: 10;
+  .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
 }
 
 .close-btn:hover {
