@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Bhuvan R | Scalable AI Systems" />
+    <meta name="description" content="Bhuvan R | AI + HPC Systems" />
     <title>Bhuvan R</title>
-
     <link rel="stylesheet" href="./style.css" />
   </head>
 
@@ -14,117 +13,85 @@
     <!-- NAV -->
     <nav class="nav">
       <h1>Bhuvan R</h1>
-      <div>
-        <a href="#projects">Projects</a>
-        <a href="#contact" class="btn btn-primary">Hire</a>
+      <div class="nav-links">
+        <a href="#research">Research</a>
+        <a href="#projects">Systems</a>
+        <a href="#contact" class="btn">Hire</a>
       </div>
     </nav>
 
     <main>
 
       <!-- HERO -->
-      <section class="section hero">
-        <h1>Designing Scalable AI Systems</h1>
-        <p>Low-latency pipelines • System optimization • Production ML</p>
+      <section class="hero">
+        <h1>Building Quantum-Classical Hybrid Systems</h1>
+        <p>HPC • Distributed Systems • Low-Latency AI • Quantum Acceleration</p>
 
         <div class="actions">
-          <a href="#projects" class="btn btn-primary">View Work</a>
-          <a href="./Bhuvan_R.pdf" class="btn btn-outline" download>Resume</a>
+          <a href="#research" class="btn primary">View Research</a>
+          <a href="./Bhuvan_R.pdf" class="btn outline" download>Resume</a>
         </div>
+      </section>
 
-        <div class="hero-metrics">
-          <div>
-            <strong>40%</strong>
-            <span>Latency Reduction</span>
-          </div>
-          <div>
-            <strong>5+</strong>
-            <span>Systems Built</span>
-          </div>
-          <div>
-            <strong>Offline</strong>
-            <span>AI Deployment</span>
+      <!-- RESEARCH -->
+      <section id="research" class="section">
+        <h2>Flagship Research</h2>
+
+        <div class="grid">
+          <div class="card featured">
+            <h3>Quantum-Classical Hybrid HPC System</h3>
+
+            <p>
+              Built a hybrid execution framework that dynamically offloads
+              optimization workloads to quantum processors while maintaining
+              scalable classical HPC throughput.
+            </p>
+
+            <p class="meta highlight">
+              2× speedup • 35% compute reduction • Hybrid scheduling
+            </p>
+
+            <div class="card-links">
+              <button class="btn-link" onclick="openProject('quantum')">
+                Details →
+              </button>
+              <!-- Add real links later -->
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- PROJECTS -->
+      <!-- SYSTEMS -->
       <section id="projects" class="section">
-        <h2>Selected Systems</h2>
-
-        <p class="section-sub">
-          Scalable systems focused on performance and reliability.
-        </p>
+        <h2>Systems</h2>
 
         <div class="grid">
 
           <div class="card">
             <h3>AI Transaction Categorizer</h3>
             <p>Hybrid ML pipeline with explainability.</p>
-            <p class="meta">Low Latency • LIME • Production</p>
-
-            <div class="card-links">
-              <a
-                href="https://github.com/Thor-asgardian/transaction-categorizer"
-                target="_blank" rel="noopener noreferrer">
-                GitHub ↗
-              </a>
-
-              <a href="https://your-live-demo-url.com" target="_blank"
-                rel="noopener noreferrer">
-                Live ↗
-              </a>
-
-              <button class="btn-link" onclick="openProject('categorizer')">
-                Details →
-              </button>
-            </div>
+            <p class="meta">40% latency reduction • Production</p>
+            <button class="btn-link" onclick="openProject('categorizer')">
+              Details →
+            </button>
           </div>
 
           <div class="card">
             <h3>Healthcare Assistant</h3>
             <p>RAG-based multilingual AI system.</p>
-            <p class="meta">RAG • FAISS • Voice AI</p>
-
-            <div class="card-links">
-              <a
-                href="https://github.com/Thor-asgardian/transaction-categorizer"
-                target="_blank" rel="noopener noreferrer">
-                GitHub ↗
-              </a>
-
-              <a href="https://your-live-demo-url.com" target="_blank"
-                rel="noopener noreferrer">
-                Live ↗
-              </a>
-
-              <button class="btn-link" onclick="openProject('categorizer')">
-                Details →
-              </button>
-            </div>
+            <p class="meta">Offline AI • Voice Interface</p>
+            <button class="btn-link" onclick="openProject('healthcare')">
+              Details →
+            </button>
           </div>
 
           <div class="card">
             <h3>Distributed Scheduler</h3>
             <p>Priority-based job execution system.</p>
-            <p class="meta">Queues • Scheduling • Distributed</p>
-
-            <div class="card-links">
-              <a
-                href="https://github.com/Thor-asgardian/transaction-categorizer"
-                target="_blank" rel="noopener noreferrer">
-                GitHub ↗
-              </a>
-
-              <a href="https://your-live-demo-url.com" target="_blank"
-                rel="noopener noreferrer">
-                Live ↗
-              </a>
-
-              <button class="btn-link" onclick="openProject('categorizer')">
-                Details →
-              </button>
-            </div>
+            <p class="meta">Scalable Workers • Queue System</p>
+            <button class="btn-link" onclick="openProject('scheduler')">
+              Details →
+            </button>
           </div>
 
         </div>
@@ -133,49 +100,22 @@
       <!-- CONTACT -->
       <section id="contact" class="section">
         <h2>Contact</h2>
-
-        <p class="contact-text">
-          <a href="mailto:bhuvanrms@gmail.com">bhuvanrms@gmail.com</a> •
-          <a href="https://wa.me/917019969393" target="_blank"
-            rel="noopener noreferrer">
-            WhatsApp
-          </a>
-        </p>
-
-        <div class="actions">
-          <a href="mailto:bhuvanrms@gmail.com" class="btn btn-primary">
-            Email
-          </a>
-
-          <a href="https://wa.me/917019969393"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-outline">
-            WhatsApp
-          </a>
-        </div>
+        <p>bhuvanrms@gmail.com</p>
       </section>
 
     </main>
 
     <!-- MODAL -->
-    <div id="modal" class="modal" role="dialog" aria-modal="true">
+    <div id="modal" class="modal">
       <div class="modal-box">
-
         <div class="modal-header">
           <h2 id="modal-title"></h2>
-          <button class="close-btn" onclick="closeModal()"
-            aria-label="Close modal">
-            ×
-          </button>
+          <span onclick="closeModal()">×</span>
         </div>
-
         <div id="modal-body"></div>
-
       </div>
     </div>
 
-    <script src="./script.js" defer></script>
-
+    <script src="./script.js"></script>
   </body>
 </html>
